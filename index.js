@@ -9,11 +9,17 @@ app.get("/",(req, res, next) => {
     res.send("Bienvenido")
 });
 
+//los dos puntos en la direccion indica el nombre de una variable
+app.get("/:name",(req, res, next) => {
+    res.status(200) //código q indica q todo se ejecutó bien
+    //Vemos el valor de la variabvle de la URL
+    res.send("Hola, " + req.params.name)
+});
 //montamos un servidor
 
 //Necesita un puerto, funcion que ejecuta
 //Flecha indica que la funicon no tiene nombre, 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("Server is running...")
 });
 /*
