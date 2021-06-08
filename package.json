@@ -26,6 +26,7 @@
   "homepage": "https://github.com/Alda53/express-workshop/blob/main/README.md",
   "dependencies": {
     "express": "^4.17.1",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.7"
   }
 }

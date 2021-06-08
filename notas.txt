@@ -1,0 +1,7 @@
+Verbos HTTP
+GET - obtener un recurso
+POST - almacenar/crear un recurso
+PATCH - modificar una parte de un recurso
+PUT - modificar un recurso completo
+DELETE - eliminar un recurso
+
