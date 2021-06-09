@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded(({ extended: true })))
 //req almacena la info del URL, res respuesta que damos, next 
 app.get("/",(req, res, next) => {
     //código que indica q todo se ejecutó bien
-    return res.status(200).res.send("Bienvenido a la Pokedex")
+    return res.status(200).send("Bienvenido a la Pokedex")
 });
 app.use("/pokemon", pokemon)
 /* Montamos un servidor
