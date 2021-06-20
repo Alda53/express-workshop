@@ -1,29 +1,28 @@
-/* este archivo solicitará los demás para su función final
-express aquí es una clase, require busca una dependencia instalada, no necesita ruta */
+//Dependencies
 const morgan = require('morgan')
 const express = require('express')
 const app = express()
+//Routes
 const pokemon = require('./routes/pokemon')
+const user = require('./routes/user')
+//Middleware
+const auth = require('./middleware/auth')
+const notFound = require('./middleware/notFound')
+const index = require('./middleware/index')
+const cors = require('./middleware/cors')
 
+app.use(cors)
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended : true }))
-// app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded(({ extended: true })))
 
-//req almacena la info del URL, res respuesta que damos, next 
-app.get("/",(req, res, next) => {
-    //código que indica q todo se ejecutó bien
-    return res.status(200).json({code: 1, message: "Bienvenido al Pokedex"})
-});
+app.get("/", index);
+app.use("/user", user)
+app.use(auth)
 app.use("/pokemon", pokemon)
-app.use((req,res,next) => {
-    return res.status(404).json({code: 404, message: "URL no encontrada"})
-})
-/* Montamos un servidor
+app.use(notFound)
 
-Necesita un puerto, funcion que ejecuta
-Flecha indica que la funicon no tiene nombre */
+// Montamos un servidor
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server is running...")
 });
